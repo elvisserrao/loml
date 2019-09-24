@@ -1,0 +1,9 @@
+{
+  "name": "Love Of My Life Counter",
+  "short_name": "loml",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}
