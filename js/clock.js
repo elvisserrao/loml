@@ -10,44 +10,130 @@ function checkTime(i) {
 
 // Mostra hora atual
 function startClock () {
-    let today = new Date();
-    let h = today.getHours();
-    let m = today.getMinutes();
-    let s = today.getSeconds();
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
 
     m = checkTime(m);
     s = checkTime(s);
+    today = h + ":";
+    today += m + ":";
+    today += s;
 
     document.getElementById('clock').innerHTML ="Hora atual ==> " + h + ":" + m + ":" + s;
-    t = setTimeout(function () {startClock()}, 500);
+    var call = setTimeout(function () {startClock()},500 );
 }
 
 //Função que faz a contagem do tempo decorrido desde 04/07/2019
 
 function countDate () {
 
-    let dateBegin = new Date(2019, 6,4,17,20); // Instância a data e hora inicial
-    let datePresent = new Date(); // Instância a data e hora presente
-    let diff = new Date(datePresent-dateBegin); // Calcula a diferença do timestamp (em milissegundos)
+    var dateBegin = new Date(2019,6,4,17,18); // Instância a data e hora inicial
+    var datePresent = new Date(); // Instância a data e hora presente
+    var diff = new Date(datePresent.getTime()-dateBegin.getTime() ); // Calcula a diferença do timestamp (em milissegundos)
 
-    let timeElapsed = checkTime(datePresent.getUTCFullYear() - dateBegin.getUTCFullYear()) + " ano(s) ";
-    timeElapsed += checkTime(diff.getUTCMonth()) + " mes(es) ";
-    timeElapsed += checkTime(Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate())) + " dia(s) ";
-    timeElapsed += checkTime(diff.getUTCHours()) + " Hora(s) ";
-    timeElapsed += checkTime(diff.getUTCMinutes()) + " minuto(s) ";
-    timeElapsed += checkTime(diff.getUTCSeconds()) + " segundo(s) ";
+    var yearElapsed = datePresent.getUTCFullYear() - dateBegin.getUTCFullYear();
+    var monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
+    var daysElapsed = Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate());
+
+    var lastDayOfMonth = new Date(datePresent.getUTCFullYear(), datePresent.getMonth(), datePresent.getUTCDate()-datePresent.getUTCDate() );
+
+    if ( datePresent.getUTCDate() < dateBegin.getUTCDate()) {
+        monthElapsed -= 1;
+        daysElapsed = lastDayOfMonth.getUTCDate() - daysElapsed;
+
+    }
+
+    if (datePresent.getUTCMonth() < dateBegin.getUTCMonth()) {
+        yearElapsed -= 1;
+        monthElapsed = 12 - Math.abs(monthElapsed);
+        // if (datePresent.getUTCDate() === dateBegin.getUTCDate()) {
+        //     monthElapsed -= 1;
+        //     daysElapsed = lastDayOfMonth.getUTCDate();
+        // }
+    } else if (datePresent.getUTCMonth() === dateBegin.getUTCMonth()) {
 
 
-    // let diffYear = Math.abs(dateBegin.getFullYear() - hoje.getFullYear());
-    // let diffMonth = Math.abs(dateBegin.getMonth() - hoje.getMonth());
-    // let diffDay = Math.abs(dateBegin.getDate() - hoje.getDate());
-    // let diffHours = Math.abs(dateBegin.getHours() - hoje.getHours());
-    // let diffMinute = Math.abs(dateBegin.getMinutes() - hoje.getMinutes());
-    // let diffSecond = Math.abs(dateBegin.getSeconds() - hoje.getSeconds());
-    document.getElementById('date').innerHTML = "Já se passaram ==> " + timeElapsed;
-    document.getElementById('date').innerHTML += "<br>Desde ==> " + dateBegin;
-    let call = setTimeout(function () {countDate(); startClock();},500 )
+            if (datePresent.getUTCHours() <= 20) {
+                if (datePresent.getUTCMinutes() < 18) {
+                    if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                        daysElapsed -= 1;
+                    } else {
+                        yearElapsed -=1;
+                        monthElapsed = 11;
+                        daysElapsed = lastDayOfMonth.getUTCDate() -1;
+                    }
+                }
+            }
+
+    }
+
+
+
+    if (datePresent.getUTCHours() < 20) {
+
+            if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                daysElapsed -= 1;
+            } else {
+
+                daysElapsed = lastDayOfMonth.getUTCDate();
+            }
+
+    } else if (datePresent.getUTCHours() === 20) {
+        if (datePresent.getUTCMinutes() < 18) {
+            if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                daysElapsed -= 1;
+            } else {
+                console.log("parou aqui")
+                monthElapsed -= 1;
+                daysElapsed = lastDayOfMonth.getUTCDate();
+            }
+        }
+    }
+
+
+    //
+    // console.log("Minutos");
+    // console.log(dateBegin.getUTCMinutes());
+    // console.log(datePresent.getUTCMinutes());
+    // console.log("Horas");
+    // console.log(dateBegin.getUTCHours());
+    // console.log(datePresent.getUTCHours());
+
+    yearElapsed += " ano(s) ";
+    monthElapsed += " meses ";
+    daysElapsed += " dia(s) ";
+
+
+    var hoursElapsed = checkTime(diff.getUTCHours()) + " Hora(s) ";
+    var minutesElapsed = checkTime(diff.getUTCMinutes()) + " minuto(s) ";
+    var secondsElapsed = checkTime(diff.getUTCSeconds()) + " segundo(s) ";
+
+
+
+
+
+    timeElapsed = yearElapsed + monthElapsed + daysElapsed + hoursElapsed + minutesElapsed + secondsElapsed;
+
+    document.getElementById('dateElapsed').textContent = "Já se passaram ==> " + timeElapsed;
+    document.getElementById('date').textContent = "Desde ==> " + dateBegin;
+    // document.getElementById('teste').innerHTML = "TESTE ==> " + yearElapsed + monthElapsed + daysElapsed;
+    var call = setTimeout(function () {countDate()},500 );
 }
 
+function checkDay() {
+    let dateBegin = new Date(2019,6,4,17,18);
+    let datePresent = new Date();
+    let diff = new Date(datePresent.getTime()-dateBegin.getTime() );
+
+    if (datePresent.getUTCDate() < dateBegin.getUTCDate()) {
+        let m = datePresent.getUTCMonth() - 1;
+        while (m) {
+
+        }
+    }
+}
+
+startClock();
 countDate();
-startClock()
