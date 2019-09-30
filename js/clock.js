@@ -69,12 +69,17 @@ function countDate () {
                 if (datePresent.getUTCMinutes() < 18) {
                     if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                         daysElapsed -= 1;
+                        yearElapsed -=1;
+                        monthElapsed = 12 - Math.abs(monthElapsed);
                     } else {
                         console.log("parou aqui");
                         yearElapsed -=1;
-                        monthElapsed = 12 - Math.abs(monthElapsed);
+                        monthElapsed = 12 - 1;
                         daysElapsed = lastDayOfMonth.getUTCDate();
                     }
+                } else {
+                    monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
+                    daysElapsed = Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate());;
                 }
             }
 
@@ -82,27 +87,27 @@ function countDate () {
 
 
 
-    if (datePresent.getUTCHours() < 20) {
-
-            if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
-                daysElapsed -= 1;
-            } else {
-
-                monthElapsed -= 1;
-                daysElapsed = lastDayOfMonth.getUTCDate();
-            }
-
-    } else if (datePresent.getUTCHours() === 20) {
-        if (datePresent.getUTCMinutes() < 18) {
-            if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
-                daysElapsed -= 1;
-            } else {
-                console.log("parou aqui")
-                monthElapsed -= 1;
-                daysElapsed = lastDayOfMonth.getUTCDate();
-            }
-        }
-    }
+    // if (datePresent.getUTCHours() < 20) {
+    //
+    //         if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+    //             daysElapsed -= 1;
+    //         } else {
+    //
+    //             monthElapsed -= 1;
+    //             daysElapsed = lastDayOfMonth.getUTCDate();
+    //         }
+    //
+    // } else if (datePresent.getUTCHours() === 20) {
+    //     if (datePresent.getUTCMinutes() < 18) {
+    //         if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+    //             daysElapsed -= 1;
+    //         } else {
+    //             console.log("parou aqui");
+    //             monthElapsed -= 1;
+    //             daysElapsed = lastDayOfMonth.getUTCDate();
+    //         }
+    //     }
+    // }
 
 
     //
