@@ -88,8 +88,7 @@ function countDate () {
                 if (datePresent.getUTCMinutes() < 18) {
                     if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                         daysElapsed -= 1;
-                        yearElapsed -=1;
-                        monthElapsed = 12 - Math.abs(monthElapsed);
+                        monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
                     } else {
                         console.log("parou aqui");
                         yearElapsed -=1;
