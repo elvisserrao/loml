@@ -55,14 +55,25 @@ function countDate () {
     } else if (datePresent.getUTCMonth() === dateBegin.getUTCMonth()) {
 
 
-            if (datePresent.getUTCHours() <= 20) {
+            if (datePresent.getUTCHours() < 20) {
+
+                if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                    daysElapsed -= 1;
+                } else {
+                    yearElapsed -=1;
+                    monthElapsed = 12 - Math.abs(monthElapsed);
+                    daysElapsed = lastDayOfMonth.getUTCDate() -1;
+                }
+
+            } else if (datePresent.getUTCHours() === 20) {
                 if (datePresent.getUTCMinutes() < 18) {
                     if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                         daysElapsed -= 1;
                     } else {
+                        console.log("parou aqui");
                         yearElapsed -=1;
-                        monthElapsed = 11;
-                        daysElapsed = lastDayOfMonth.getUTCDate() -1;
+                        monthElapsed = 12 - Math.abs(monthElapsed);
+                        daysElapsed = lastDayOfMonth.getUTCDate();
                     }
                 }
             }
@@ -77,6 +88,7 @@ function countDate () {
                 daysElapsed -= 1;
             } else {
 
+                monthElapsed -= 1;
                 daysElapsed = lastDayOfMonth.getUTCDate();
             }
 
