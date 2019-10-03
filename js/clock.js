@@ -43,11 +43,9 @@ function countDate () {
         monthElapsed -= 1;
         daysElapsed = lastDayOfMonth.getUTCDate() - daysElapsed;
     }
-
     if (datePresent.getUTCMonth() < dateBegin.getUTCMonth()) {
         yearElapsed -= 1;
         if (datePresent.getUTCHours() < 20) {
-
             if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                 daysElapsed -= 1;
             } else {
@@ -55,14 +53,11 @@ function countDate () {
                 monthElapsed = 12 - Math.abs(monthElapsed);
                 daysElapsed = lastDayOfMonth.getUTCDate() -1;
             }
-
         } else if (datePresent.getUTCHours() === 20) {
             if (datePresent.getUTCMinutes() < 18) {
                 if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                     daysElapsed -= 1;
-                    // monthElapsed = 12 - Math.abs(monthElapsed);
                 } else {
-                    console.log("parou aqui");
                     monthElapsed = 11 - Math.abs(monthElapsed);
                     daysElapsed = lastDayOfMonth.getUTCDate() -1;
                 }
@@ -71,11 +66,8 @@ function countDate () {
                 daysElapsed = Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate());
             }
         }
-    } else if (datePresent.getUTCMonth() >= dateBegin.getUTCMonth()) {
-
-
+    } else if (datePresent.getUTCMonth() > dateBegin.getUTCMonth()) {
             if (datePresent.getUTCHours() < 20) {
-
                 if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                     daysElapsed -= 1;
                 } else {
@@ -83,16 +75,13 @@ function countDate () {
                     monthElapsed = 12 - Math.abs(monthElapsed);
                     daysElapsed = lastDayOfMonth.getUTCDate() -1;
                 }
-
             } else if (datePresent.getUTCHours() === 20) {
                 if (datePresent.getUTCMinutes() < 18) {
                     if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                         daysElapsed -= 1;
                         monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
                     } else {
-                        console.log("parou aqui");
-                        yearElapsed -=1;
-                        monthElapsed = 12 - 1;
+                        monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth() - 1;
                         daysElapsed = lastDayOfMonth.getUTCDate();
                     }
                 } else {
@@ -101,59 +90,43 @@ function countDate () {
                 }
             }
 
+    } else {
+        if (datePresent.getUTCHours() < 20) {
+            if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                daysElapsed -= 1;
+            } else {
+                yearElapsed -=1;
+                monthElapsed = 12 - Math.abs(monthElapsed);
+                daysElapsed = lastDayOfMonth.getUTCDate() -1;
+            }
+        } else if (datePresent.getUTCHours() === 20) {
+            if (datePresent.getUTCMinutes() < 18) {
+                if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                    daysElapsed -= 1;
+                    monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
+                } else {
+                    yearElapsed -=1;
+                    monthElapsed = 12 - 1;
+                    daysElapsed = lastDayOfMonth.getUTCDate();
+                }
+            } else {
+                monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
+                daysElapsed = Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate());;
+            }
+        }
     }
-
-
-
-    // if (datePresent.getUTCHours() < 20) {
-    //
-    //         if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
-    //             daysElapsed -= 1;
-    //         } else {
-    //
-    //             monthElapsed -= 1;
-    //             daysElapsed = lastDayOfMonth.getUTCDate();
-    //         }
-    //
-    // } else if (datePresent.getUTCHours() === 20) {
-    //     if (datePresent.getUTCMinutes() < 18) {
-    //         if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
-    //             daysElapsed -= 1;
-    //         } else {
-    //             console.log("parou aqui");
-    //             monthElapsed -= 1;
-    //             daysElapsed = lastDayOfMonth.getUTCDate();
-    //         }
-    //     }
-    // }
-
-
-    //
-    // console.log("Minutos");
-    // console.log(dateBegin.getUTCMinutes());
-    // console.log(datePresent.getUTCMinutes());
-    // console.log("Horas");
-    // console.log(dateBegin.getUTCHours());
-    // console.log(datePresent.getUTCHours());
 
     yearElapsed += " ano(s) ";
     monthElapsed += " meses ";
     daysElapsed += " dia(s) ";
 
-
     var hoursElapsed = checkTime(diff.getUTCHours()) + " Hora(s) ";
     var minutesElapsed = checkTime(diff.getUTCMinutes()) + " minuto(s) ";
     var secondsElapsed = checkTime(diff.getUTCSeconds()) + " segundo(s) ";
 
-
-
-
-
     timeElapsed = yearElapsed + monthElapsed + daysElapsed + hoursElapsed + minutesElapsed + secondsElapsed;
 
     document.getElementById('dateElapsed').textContent = "Já se passaram ==> " + timeElapsed;
-    document.getElementById('date').textContent = "Desde ==> " + dateBegin;
-    // document.getElementById('teste').innerHTML = "TESTE ==> " + yearElapsed + monthElapsed + daysElapsed;
     var call = setTimeout(function () {countDate()},500 );
 }
 
@@ -170,5 +143,4 @@ function checkDay() {
     }
 }
 
-startClock();
 countDate();
