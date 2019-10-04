@@ -71,8 +71,7 @@ function countDate () {
                 if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
                     daysElapsed -= 1;
                 } else {
-                    yearElapsed -=1;
-                    monthElapsed = 12 - Math.abs(monthElapsed);
+                    monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth() - 1;
                     daysElapsed = lastDayOfMonth.getUTCDate() -1;
                 }
             } else if (datePresent.getUTCHours() === 20) {
@@ -87,6 +86,15 @@ function countDate () {
                 } else {
                     monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
                     daysElapsed = Math.abs(datePresent.getUTCDate() - dateBegin.getUTCDate());;
+                }
+            } else {
+
+                if (datePresent.getUTCDate() !== dateBegin.getUTCDate()) {
+                    daysElapsed -= 1;
+                    monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth();
+                } else {
+                    monthElapsed = datePresent.getUTCMonth() - dateBegin.getUTCMonth() - 1;
+                    daysElapsed = lastDayOfMonth.getUTCDate();
                 }
             }
 
