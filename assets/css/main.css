@@ -1,0 +1,84 @@
+
+/* Responsive Full Background Image Using CSS
+ * Tutorial URL: http://sixrevisions.com/css/responsive-background-image/
+*/
+html {
+    height: 100%;
+}
+
+/* Font used to description of couple and date begin */
+@font-face {
+    font-family: "Scriptina";
+    src: url(../assets/font/SCRIPTIN.ttf);
+}
+
+/* Font used to hours */
+@font-face {
+    font-family: "Comic Sans Bold";
+    src: url(../assets/font/comic-sans-ms-bold-2.ttf);
+}
+
+body {
+    /* Location of the image */
+    background-image: url(../img/background.jpg);
+
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+
+    /* Makes the image fixed in the viewport so that it doesn't move when
+       the content height is greater than the image height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
+
+    /* SHORTHAND CSS NOTATION
+     * background: url(background-photo.jpg) center center cover no-repeat fixed;
+     */
+
+    height: 100%;
+    margin: 0px;
+}
+
+/* Format name of the couple */
+.couple {
+    font-family: "Scriptina";
+    color: #fff;
+    font-size: 9em;
+    margin-bottom: 60px;
+}
+
+/* Format current time of the dating */
+#dateElapsed {
+    color: #fff; 
+    font-size: 2em;
+    font-family: "Comic Sans Bold";
+    padding: 0 100px 0 100px;
+}
+
+/* Delete padding when the width is less than 576px */
+@media(max-width: 576px) {
+    #dateElapsed {
+        padding: 0;
+    }
+}
+
+/* Align at center date and hours with description */
+#dateElapsed p {
+   text-align: center;
+}
+
+/* Format date begin of the dating */
+.dateBegin {
+    color: #fff;
+    font-family: "Scriptina";
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: bold;
+}

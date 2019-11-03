@@ -124,17 +124,17 @@ function countDate () {
         }
     }
 
-    yearElapsed += " ano(s) ";
-    monthElapsed += " meses ";
-    daysElapsed += " dia(s) ";
+    yearElapsed = `<div class="col-sm"><p>${yearElapsed}</p><p>Ano(s)</p></div>`;
+    monthElapsed = `<div class="col-sm"><p>${monthElapsed}</p><p>Meses</p></div>`;
+    daysElapsed = `<div class="col-sm"><p>${daysElapsed}</p><p>Dia(s)</p></div>`;
 
-    var hoursElapsed = checkTime(diff.getUTCHours()) + " Hora(s) ";
-    var minutesElapsed = checkTime(diff.getUTCMinutes()) + " minuto(s) ";
-    var secondsElapsed = checkTime(diff.getUTCSeconds()) + " segundo(s) ";
+    var hoursElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCHours())}</p> <p>Hora(s)</p></div>`;
+    var minutesElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCMinutes())}</p> <p>Minuto(s)</p></div>`;
+    var secondsElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCSeconds())}</p> <p>Segundo(s)</p></div>`;
 
-    timeElapsed = yearElapsed + monthElapsed + daysElapsed + hoursElapsed + minutesElapsed + secondsElapsed;
+    timeElapsed = `${yearElapsed} ${monthElapsed} ${daysElapsed} ${hoursElapsed} ${minutesElapsed} ${secondsElapsed}`;
 
-    document.getElementById('dateElapsed').textContent = "Já se passaram ==> " + timeElapsed;
+    document.querySelector('#dateElapsed').innerHTML = timeElapsed;
     var call = setTimeout(function () {countDate()},500 );
 }
 
