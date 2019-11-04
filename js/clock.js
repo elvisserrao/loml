@@ -124,13 +124,13 @@ function countDate () {
         }
     }
 
-    yearElapsed = `<div class="col-sm"><p>${yearElapsed}</p><p>Ano(s)</p></div>`;
-    monthElapsed = `<div class="col-sm"><p>${monthElapsed}</p><p>Meses</p></div>`;
-    daysElapsed = `<div class="col-sm"><p>${daysElapsed}</p><p>Dia(s)</p></div>`;
+    yearElapsed = `<div class="col"><p>${yearElapsed}</p><p>Ano(s)</p></div>`;
+    monthElapsed = `<div class="col"><p>${monthElapsed}</p><p>Meses</p></div>`;
+    daysElapsed = `<div class="col"><p>${daysElapsed}</p><p>Dia(s)</p></div>`;
 
-    var hoursElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCHours())}</p> <p>Hora(s)</p></div>`;
-    var minutesElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCMinutes())}</p> <p>Minuto(s)</p></div>`;
-    var secondsElapsed = `<div class="col-sm"><p>${checkTime(diff.getUTCSeconds())}</p> <p>Segundo(s)</p></div>`;
+    var hoursElapsed = `<div class="col"><p>${checkTime(diff.getUTCHours())}</p> <p>Hora(s)</p></div>`;
+    var minutesElapsed = `<div class="col"><p>${checkTime(diff.getUTCMinutes())}</p> <p>Minuto(s)</p></div>`;
+    var secondsElapsed = `<div class="col"><p>${checkTime(diff.getUTCSeconds())}</p> <p>Segundo(s)</p></div>`;
 
     timeElapsed = `${yearElapsed} ${monthElapsed} ${daysElapsed} ${hoursElapsed} ${minutesElapsed} ${secondsElapsed}`;
 
