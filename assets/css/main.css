@@ -1,0 +1,142 @@
+
+/* Responsive Full Background Image Using CSS
+ * Tutorial URL: http://sixrevisions.com/css/responsive-background-image/
+*/
+
+
+html {
+    height: 100%;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* Font used to description of couple and date begin */
+@font-face {
+    font-family: "Scriptina";
+    src: url(../fonts/SCRIPTIN.ttf);
+}
+
+/* Font used to hours */
+@font-face {
+    font-family: "Comic Sans Bold";
+    src: url(../fonts/comic-sans-ms-bold-2.ttf);
+}
+
+body {
+    /* Location of the image */
+    background-image: url(../img/background.jpg);
+
+    /* Image is centered vertically and horizontally at all times */
+    background-position: center center;
+
+    /* Image doesn't repeat */
+    background-repeat: no-repeat;
+
+    /* Makes the image fixed in the viewport so that it doesn't move when
+       the content height is greater than the image height */
+    background-attachment: fixed;
+
+    /* This is what makes the background image rescale based on its container's size */
+    background-size: cover;
+
+    /* Pick a solid background color that will be displayed while the background image is loading */
+    background-color:#464646;
+
+    /* SHORTHAND CSS NOTATION
+     * background: url(background-photo.jpg) center center cover no-repeat fixed;
+     */
+
+    height: 100%;
+    margin: 0px;
+    text-shadow: 0 0 10px #184a6e, 0 0 20px #184a6e, 0 0 30px #184a6e, 0 0 40px #aa5451, 0 0 70px #aa5451, 0 0 80px #aa5451, 0 0 100px #aa5451, 0 0 150px #aa5451;
+}
+
+/* Format name of the couple */
+.couple {
+    font-family: "Scriptina";
+    color: #fff;
+    font-size: 9em;
+    margin-bottom: 60px;
+}
+
+/* Format current time of the dating */
+#dateElapsed {
+    color: #fff; 
+    font-size: 2em;
+    font-family: "Comic Sans Bold";
+    padding: 0 100px 0 100px;
+    font-weight: bold;
+}
+
+/* Align at center date and hours with description */
+#dateElapsed p {
+   text-align: center;
+}
+
+/* Format date begin of the dating */
+.dateBegin {
+    color: #fff;
+    font-family: "Scriptina";
+    color: #fff;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Responsive */
+
+@media(max-width: 575.98px) {
+
+    /* Delete padding when the width is less than 576px */
+    #dateElapsed {
+        padding: 0;
+    }
+    /* Change font size when the width is less than 576px */
+    .couple {
+        font-size: 4em;
+    }
+
+    /* Change font size when the width is less than 576px */    
+    #dateElapsed {
+        font-size: 1em;
+    }
+
+    /* Change font size when the width is less than 576px */
+    .dateBegin {
+        font-size: 1.5em
+    }
+    
+    /* Decreases .col class padding when the width is less than 576px */
+    .col {
+        padding: 0 5px 0 5px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+   
+    /* Delete padding when the width is more than 768px and less than 1199.98px */
+    #dateElapsed {
+        padding: 0;
+    }
+    /* Change font size when the width is less more than 768px and than 1199.98px */
+    .couple {
+        font-size: 6em;
+    }
+
+    /* Change font size when the width is less more than 768px and than 1199.98px */    
+    #dateElapsed {
+        font-size: 1.8em;
+    }
+
+    /* Change font size when the width is less more than 768px and than 1199.98px */
+    .dateBegin {
+        font-size: 3em;
+    }
+    
+    /* Decreases .col class padding when the width is more than 768px and less than 1199.98px */
+    .col {
+        padding: 0 5px 0 5px;
+    }
+}
